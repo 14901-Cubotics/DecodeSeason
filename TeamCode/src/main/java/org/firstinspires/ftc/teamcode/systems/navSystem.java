@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.systems;
 
-import com.qualcomm.hardware.dfrobot.HuskyLens;
+//import com.qualcomm.hardware.dfrobot.HuskyLens;
 import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -16,21 +16,21 @@ public class navSystem {
     private int START_X = 1;
     private int START_Y = 1;
     private int START_HEAD = 180;
-    private HuskyLens huskyLens;
+    //private HuskyLens huskyLens;
     private GoBildaPinpointDriver pinpoint;
 
     Deadline rateLimit = new Deadline(READ_PERIOD, TimeUnit.SECONDS);
 
     public void init(HardwareMap hMap){
-        huskyLens = hMap.get(HuskyLens.class,"huskylens");
+        //huskyLens = hMap.get(HuskyLens.class,"huskylens");
         pinpoint = hMap.get(GoBildaPinpointDriver.class, "pintpoint");
 
         rateLimit.expire();
-        huskyLens.selectAlgorithm(HuskyLens.Algorithm.TAG_RECOGNITION);
+        //huskyLens.selectAlgorithm(HuskyLens.Algorithm.TAG_RECOGNITION);
 
         configurePinpoint();
     }
-
+/*
     public boolean findTag(int tagToFind){
         HuskyLens.Block[] blocks = huskyLens.blocks();
         boolean found = false;
@@ -43,7 +43,7 @@ public class navSystem {
         }
         return found;
     }
-
+*/
     public Pose2D getCurrentPose(){
         Pose2D currentPose = pinpoint.getPosition();
         return currentPose;
