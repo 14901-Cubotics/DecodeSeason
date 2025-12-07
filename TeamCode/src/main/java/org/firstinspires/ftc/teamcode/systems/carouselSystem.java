@@ -19,6 +19,14 @@ public class carouselSystem {
     // See line 156 or setting power.
 
     // For this you will need to use the ticks of the motor to make 3 positions.
+    // go on GoBilda site, find motor and speed. it'll give you teh number of ticks per revolution.
+    // Divide that by 3.
+
+    //  Use variables to store previous tick reading, then move relative to it.
+
+    // Create a method for advancing to next position
+
+    // create a method for running it manually
 
 
 }
