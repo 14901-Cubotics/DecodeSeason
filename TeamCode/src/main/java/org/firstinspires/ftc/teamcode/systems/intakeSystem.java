@@ -7,12 +7,23 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class intakeSystem {
     private DcMotor intakeMotor;
+    private Double intakeSpeed = 1.0;
 
     public void init(HardwareMap hMap){
         intakeMotor = hMap.get(DcMotorEx.class,"intakemotor");
         intakeMotor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
+    public void runIntake(){
+        intakeMotor.setPower(intakeSpeed);
+    }
 
+    public void stopIntake(){
+        intakeMotor.setPower(0.0);
+    }
+
+    public void reverseRunIntake(){
+        intakeMotor.setPower(-intakeSpeed);
+    }
     // Create a public method that controls the intake motor.
     // Look at the init method above for structure. You don't need anything in the parentheses.
 

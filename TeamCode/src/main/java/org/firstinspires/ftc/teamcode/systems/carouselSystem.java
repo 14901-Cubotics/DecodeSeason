@@ -6,10 +6,15 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class carouselSystem {
     private DcMotorEx carouselMotor;
+    private final int encoderRes = 385;
 
     public void init(HardwareMap hMap){
         carouselMotor = hMap.get(DcMotorEx.class,"carouselmotor");
         carouselMotor.setDirection(DcMotor.Direction.FORWARD);
+    }
+
+    public void advanceCarousel (){
+        
     }
 
     // Create a public method that controls the carousel motor.
