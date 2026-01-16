@@ -14,14 +14,17 @@ public class intakeSystem {
         intakeMotor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
     public void runIntake(){
+
         intakeMotor.setPower(intakeSpeed);
     }
 
     public void stopIntake(){
+
         intakeMotor.setPower(0.0);
     }
 
     public void reverseRunIntake(){
+
         intakeMotor.setPower(-intakeSpeed);
     }
     // Create a public method that controls the intake motor.
