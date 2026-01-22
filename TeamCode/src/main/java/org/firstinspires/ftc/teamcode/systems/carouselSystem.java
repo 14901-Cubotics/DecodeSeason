@@ -2,14 +2,29 @@ package org.firstinspires.ftc.teamcode.systems;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class carouselSystem {
     private DcMotorEx carouselMotor;
+    private final int encoderRes = 385;
+    private int tpb = encoderRes/3;
+    private int currentTics;
+    private int targetTics;
 
     public void init(HardwareMap hMap){
         carouselMotor = hMap.get(DcMotorEx.class,"carouselmotor");
-        carouselMotor.setDirection(DcMotor.Direction.FORWARD);
+        carouselMotor.setDirection(DcMotor.Direction.REVERSE);
+        carouselMotor.setTargetPositionTolerance(1);
+    }
+    
+
+    public void advanceCarousel (){
+        currentTics = carouselMotor.getCurrentPosition();
+        targetTics = currentTics + tpb;
+        carouselMotor.setTargetPosition(targetTics);
+        carouselMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        carouselMotor.setPower(0.5);
     }
 
     // Create a public method that controls the carousel motor.
