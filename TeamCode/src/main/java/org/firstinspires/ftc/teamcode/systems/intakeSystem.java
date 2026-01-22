@@ -13,25 +13,17 @@ public class intakeSystem {
         intakeMotor = hMap.get(DcMotorEx.class,"intakemotor");
         intakeMotor.setDirection(DcMotorSimple.Direction.FORWARD);
     }
-    public void runIntake(){
+    public void runIntake(){//runs intake forward
         intakeMotor.setPower(intakeSpeed);
     }
 
-    public void stopIntake(){
+    public void stopIntake(){//stops intake
         intakeMotor.setPower(0.0);
     }
 
-    public void reverseRunIntake(){
+    public void reverseRunIntake(){//runs intake backwards
         intakeMotor.setPower(-intakeSpeed);
     }
-    // Create a public method that controls the intake motor.
-    // Look at the init method above for structure. You don't need anything in the parentheses.
-
-    // Reference BasicOmniOpMode.java in FtcRobotController/java/org.firstinspires.ftc.robotcontroller/external.samples
-    // See line 156 or setting power.
-
-
-    // Create a public method that runs the intake in reverse.
 
 
 }
