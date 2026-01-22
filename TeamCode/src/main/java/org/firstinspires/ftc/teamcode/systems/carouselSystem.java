@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.systems;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -7,10 +9,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class carouselSystem {
     private DcMotorEx carouselMotor;
-    private final int encoderRes = 385;
-    private int tpb = encoderRes/3;
-    private int currentTics;
-    private int targetTics;
+    private int posCurrent = 0;
+    private final int pos1 = 251;
+    private final int pos2 = 502;
+    private final int pos3 = 752;
 
     public void init(HardwareMap hMap){
         carouselMotor = hMap.get(DcMotorEx.class,"carouselmotor");
@@ -20,12 +22,31 @@ public class carouselSystem {
     
 
     public void advanceCarousel (){
-        currentTics = carouselMotor.getCurrentPosition();
-        targetTics = currentTics + tpb;
-        carouselMotor.setTargetPosition(targetTics);
-        carouselMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        carouselMotor.setPower(0.5);
+        switch (posCurrent){
+            case 0:
+                carouselMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                posCurrent= 1;
+                break;
+            case 1:
+                carouselMotor.setTargetPosition(pos1);
+                carouselMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                posCurrent = 2;
+                break;
+            case 2:
+                carouselMotor.setTargetPosition(pos2);
+                carouselMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                posCurrent = 3;
+                break;
+            case 3:
+                carouselMotor.setTargetPosition(pos3);
+                carouselMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                posCurrent = 0;
+                break;
+
+        }
     }
+
+
 
     // Create a public method that controls the carousel motor.
     // Look at the init method above for structure. You don't need anything in the parentheses.

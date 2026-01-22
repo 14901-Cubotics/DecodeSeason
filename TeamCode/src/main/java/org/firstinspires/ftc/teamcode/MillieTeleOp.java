@@ -23,6 +23,7 @@ public class MillieTeleOp extends OpMode {
     }
     @Override
     public void loop(){
+        
         if (gamepad1.left_trigger == 1){
             intake.runIntake();
         } else if (gamepad1.right_trigger == 1) {

@@ -10,7 +10,6 @@ public class launchSystem {
     public void init (HardwareMap hMap){
         Flywheel = hMap.get(DcMotorEx.class,"carouselmotor");
         Flywheel.setDirection(DcMotor.Direction.REVERSE);
-        Flywheel.setPower();
     }
     
 }
