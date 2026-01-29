@@ -14,24 +14,34 @@ public class MillieTeleOp extends OpMode {
    private mechanumDrive drive = new mechanumDrive();
    private carouselSystem carousel = new carouselSystem();
    private launchSystem launch = new launchSystem();
-    @Override
+
+   @Override
     public void init(){
         intake.init(hardwareMap);
         drive.init(hardwareMap);
-        carousel.init(hardwareMap);
+        carousel.init(this);
         launch.init(hardwareMap);
     }
+
     @Override
     public void loop(){
         
-        if (gamepad1.left_trigger == 1){
+        if (gamepad1.left_bumper){
             intake.runIntake();
-        } else if (gamepad1.right_trigger == 1) {
+        } else if (gamepad1.right_bumper) {
             intake.reverseRunIntake();
         }
-        if (gamepad2.a == true){
+
+        if (gamepad1.a == true){
             carousel.advanceCarousel();
         }
+        if (gamepad1.dpad_up){
+            launch.activateLongFlywheel();
+        }
+        if (gamepad1.dpad_down){
+            launch.stopFlywheel();
+        }
+
         drive.driveRobot(gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
     }
 }
